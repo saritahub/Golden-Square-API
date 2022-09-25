@@ -5,10 +5,10 @@ RSpec.describe ActivitySuggester do
   it "suggests an activity" do
     # activity_suggester = ActivitySuggester.new(Net::HTTP) #REPLACE (Net::HTTP) with double
 
-    fake_requester = double :requester
-    expect(fake_requester).to receive(:get).with("www.boredapi.com", "/api/activity").and_return('{"activity":"Paint the first thing you see","type":"recreational","participants":1,"price":0.25,"link":"","key":"1162360","accessibility":0.2}')
-    activity_suggester = ActivitySuggester.new(fake_requester)
-    expect(activity_suggester.suggest).to eq "Why not: Paint the first thing you see"
+    fake_request = double :requester
+    expect(fake_request).to receive(:get).with("www.boredapi.com", "/api/activity").and_return('{"activity":"Take your dog on a run","type":"recreational","participants":1,"price":0.25,"link":"","key":"1162360","accessibility":0.2}')
+    activity_suggester = ActivitySuggester.new(fake_request)
+    expect(activity_suggester.suggest).to eq "Why not: Take your dog on a run"
   end
 
 
